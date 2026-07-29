@@ -23,7 +23,7 @@ spec:
           type: RuntimeDefault
       containers:
         - name: api
-          image: aksacrdev02.azurecr.io/image-generator:2ec20f8d50e6149df88c19a67c25ac3d6a4a4c25
+          image: aksacrdev02.azurecr.io/image-generator:e317eac07d3c8023cb6f06b17609bdf081b4b836
           imagePullPolicy: Always
           ports:
             - name: http
