@@ -1,0 +1,1 @@
+"""Image generator application package."""
