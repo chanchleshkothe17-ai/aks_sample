@@ -17,11 +17,13 @@ spec:
     spec:
       securityContext:
         runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
         seccompProfile:
           type: RuntimeDefault
       containers:
         - name: api
-          image: aksacrdev02.azurecr.io/samples/sample-app
+          image: aksacrdev02.azurecr.io/image-generator:2ec20f8d50e6149df88c19a67c25ac3d6a4a4c25
           imagePullPolicy: Always
           ports:
             - name: http
