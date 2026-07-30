@@ -41,8 +41,10 @@ jobs:
           echo "PYTHONPATH=${{ github.workspace }}" >> $GITHUB_ENV
 
       - name: Run Unit Tests
+        env:
+          DATABASE_URL: sqlite:///./test.db
         run: |
-          pytest -v
+          python -m pytest -v
 
       - name: Azure Login (OIDC)
         uses: azure/login@v2
