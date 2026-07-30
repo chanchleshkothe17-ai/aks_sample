@@ -19,7 +19,7 @@ spec:
       containers:
         - name: fastapi
 
-          image: aksacrdev02.azurecr.io/aks-mysql-sample:dfdfd2faa8ae2de54bcbe594024b98a432f1e681
+          image: aksacrdev02.azurecr.io/aks-mysql-sample:latest
 
           imagePullPolicy: Always
 

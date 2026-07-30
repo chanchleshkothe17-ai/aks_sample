@@ -79,3 +79,13 @@ jobs:
           echo "Image pushed successfully"
           echo "Image:"
           echo "${{ vars.ACR_NAME }}.azurecr.io/${{ vars.IMAGE_NAME }}:${{ github.sha }}"
+
+      - name: Update Kubernetes Deployment Image
+        shell: bash
+        run: |
+          IMAGE="${{ vars.ACR_NAME }}.azurecr.io/${{ vars.IMAGE_NAME }}:${{ github.sha }}"
+
+          sed -i "s|image: .*|image: ${IMAGE}|g" k8s/deployment.yaml
+
+          echo "Updated deployment.yaml:"
+          cat k8s/deployment.yaml
