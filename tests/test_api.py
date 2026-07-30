@@ -14,3 +14,4 @@ def test_health():
     assert response.json() == {
         "status": "healthy"
     }
+    
