@@ -85,7 +85,15 @@ jobs:
         run: |
           IMAGE="${{ vars.ACR_NAME }}.azurecr.io/${{ vars.IMAGE_NAME }}:${{ github.sha }}"
 
-          sed -i "s|image: .*|image: ${IMAGE}|g" k8s/deployment.yaml
+          echo "Updating deployment.yaml with image:"
+          echo "$IMAGE"
+
+          sed -i -E "s|(^[[:space:]]*image:[[:space:]]*).*|\1${IMAGE}|" k8s/deployment.yaml
 
           echo "Updated deployment.yaml:"
-          cat k8s/deployment.yaml
+          grep "image:" k8s/deployment.yaml
+
+          if ! grep -q "${{ github.sha }}" k8s/deployment.yaml; then
+            echo "Failed to update deployment.yaml"
+            exit 1
+          fi
