@@ -1,1 +1,1 @@
-"""Image generator application package."""
+"""Domain services for the application."""
