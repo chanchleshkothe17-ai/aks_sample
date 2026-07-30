@@ -61,13 +61,16 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-  # Build & Push Docker Image
-      - name: Build and Push Docker Image
+      - name: Login to ACR
+        run: az acr login --name ${{ vars.ACR_NAME }}
+
+      - name: Build and Push
         uses: docker/build-push-action@v6
         with:
           context: .
-          push: true
           platforms: linux/amd64
+          push: true
+          provenance: false
           tags: |
             ${{ vars.ACR_NAME }}.azurecr.io/${{ vars.IMAGE_NAME }}:${{ github.sha }}
             ${{ vars.ACR_NAME }}.azurecr.io/${{ vars.IMAGE_NAME }}:latest
