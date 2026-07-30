@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapi-service
+  namespace: aks-demo
+
+spec:
+  selector:
+    app: fastapi-app
+
+  ports:
+    - port: 80
+      targetPort: 8000
+
+  type: LoadBalancer

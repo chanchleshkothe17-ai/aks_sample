@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: aks-demo
+data:
+  MYSQL_HOST: "aks-sql.mysql.database.azure.com"
+  MYSQL_PORT: "3306"
+  MYSQL_DATABASE: "mysql"
+  MYSQL_USER: "akssql"
